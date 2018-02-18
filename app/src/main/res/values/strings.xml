@@ -10,6 +10,7 @@
     <string name="name_of_the_product">Name of the product</string>
     <string name="price_of_the_product">Price of the product</string>
     <string name="quantity_of_the_product">Quantity</string>
+    <string name="Rs">\u20B9</string>
     <string name="insertSuccesToast">Insert Succesful!</string>
     <string name="valueincdecstring">Enter the value to add or remove</string>
     <string name="Valueconst">Value should be greater than zero</string>

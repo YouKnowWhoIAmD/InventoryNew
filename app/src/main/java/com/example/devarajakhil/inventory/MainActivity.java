@@ -87,27 +87,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addthis(){
-       // dbb = new MyDB(this,null,null,1);
-       // dbb.addHandler(name.getText().toString(),price.getText().toString(), quantity.getText().toString());
+    public void addthis() {
+        // dbb = new MyDB(this,null,null,1);
+        // dbb.addHandler(name.getText().toString(),price.getText().toString(), quantity.getText().toString());
 
 
         DataObject uobj = new DataObject();
         uobj.name = name.getText().toString();
         uobj.price = price.getText().toString();
         uobj.quantity = quantity.getText().toString();
-
-
-
-        dbb.insertMessage(uobj);
-
-
-        data_list = dbb.getNotifications();
-        adapter.ReloadDatax(data_list);
-        recyclerView.setAdapter(adapter);
-
-
-
-        Toast.makeText(this, R.string.insertSuccesToast, Toast.LENGTH_SHORT).show();
+        try {
+            if (isEmpty(name) || isEmpty(price) || isEmpty(quantity)) {
+                Toast.makeText(this, "Please fill everything correctly", Toast.LENGTH_SHORT).show();
+            } else {
+                int i = Integer.parseInt(uobj.price);
+                int j = Integer.parseInt(uobj.quantity);
+                j=i+j;
+                dbb.insertMessage(uobj);
+                data_list = dbb.getNotifications();
+                adapter.ReloadDatax(data_list);
+                recyclerView.setAdapter(adapter);
+                Toast.makeText(this, R.string.insertSuccesToast, Toast.LENGTH_SHORT).show();
+            }
+        }catch(NumberFormatException e){
+            Toast.makeText(this,"Enter only numbers in quantity and price fiels",Toast.LENGTH_SHORT).show();
+        }
+    }
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() <= 0;
     }
 }
