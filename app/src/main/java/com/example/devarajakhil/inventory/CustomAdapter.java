@@ -51,28 +51,32 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //my_data.get(position).setQuantity(my_data.get(position).getQuantity()+1);
-                String some = my_data.get(position).getQuantity();
-                int an = Integer.parseInt(some);
-                an++;
-                String what = String.valueOf(an);
-                my_data.get(position).quantity = what;
-                Log.v("checkkkkkk",what);
-                holder.quantity.setText(my_data.get(position).getQuantity());
+                try {
+                    //my_data.get(position).setQuantity(my_data.get(position).getQuantity()+1);
+                    String some = my_data.get(position).getQuantity();
+                    int an = Integer.parseInt(some);
+                    an++;
+                    String what = String.valueOf(an);
+                    my_data.get(position).quantity = what;
+                    Log.v("checkkkkkk", what);
+                    holder.quantity.setText(my_data.get(position).getQuantity());
+                }catch (NumberFormatException n){Toast.makeText(context,"Please Enter Numbers Only",Toast.LENGTH_SHORT).show();}
             }
         });
         holder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //my_data.get(position).setQuantity(my_data.get(position).getQuantity()-1);
-                String some = my_data.get(position).getQuantity();
-                int an = Integer.parseInt(some);
-                if(an>0)
-                an--;
-                String what = String.valueOf(an);
-                my_data.get(position).quantity = what;
-                Log.v("checkkkkkk",what);
-                holder.quantity.setText(my_data.get(position).getQuantity());
+                try {
+                    //my_data.get(position).setQuantity(my_data.get(position).getQuantity()-1);
+                    String some = my_data.get(position).getQuantity();
+                    int an = Integer.parseInt(some);
+                    if (an > 0)
+                        an--;
+                    String what = String.valueOf(an);
+                    my_data.get(position).quantity = what;
+                    Log.v("checkkkkkk", what);
+                    holder.quantity.setText(my_data.get(position).getQuantity());
+                }catch (NumberFormatException n){Toast.makeText(context,"Please Enter Numbers Only",Toast.LENGTH_SHORT).show();}
             }
         });
         holder.plus.setOnLongClickListener(new View.OnLongClickListener() {
@@ -91,10 +95,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                         .setPositiveButton("OK",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,int id) {
-                                        int given = Integer.parseInt(name.getText().toString());
-                                        int some = Integer.parseInt(my_data.get(position).getQuantity());
-                                            my_data.get(position).quantity = String.valueOf(some+given);
+                                        try {
+                                            int given = Integer.parseInt(name.getText().toString());
+                                            int some = Integer.parseInt(my_data.get(position).getQuantity());
+                                            my_data.get(position).quantity = String.valueOf(some + given);
                                             holder.quantity.setText(my_data.get(position).getQuantity());
+                                        }catch (NumberFormatException n){Toast.makeText(context,"Please Enter Numbers Only",Toast.LENGTH_SHORT).show();}
                                     }
                                 })
                         .setNegativeButton("Cancel",
@@ -124,12 +130,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                         .setPositiveButton("OK",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,int id) {
-                                        int given = Integer.parseInt(name.getText().toString());
-                                        int some = Integer.parseInt(my_data.get(position).getQuantity());
-                                        if(some>given+1)
-                                            some-=given;
-                                        my_data.get(position).quantity = String.valueOf(some);
-                                        holder.quantity.setText(my_data.get(position).getQuantity());
+                                        try {
+                                            int given = Integer.parseInt(name.getText().toString());
+                                            int some = Integer.parseInt(my_data.get(position).getQuantity());
+                                            if (some > given + 1)
+                                                some -= given;
+                                            else Toast.makeText(context,"You cannot Decrement less than the actual number of products",Toast.LENGTH_SHORT).show();
+                                            my_data.get(position).quantity = String.valueOf(some);
+                                            holder.quantity.setText(my_data.get(position).getQuantity());
+                                        }catch (NumberFormatException n){Toast.makeText(context,"Please Enter Numbers Only",Toast.LENGTH_SHORT).show();}
                                     }
                                 })
                         .setNegativeButton("Cancel",
