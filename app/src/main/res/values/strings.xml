@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Inventory</string>
+    <string name="PlusButtonString">+</string>
+    <string name="ButtonminusString">-</string>
+    <string name="quantitytvString">Quantity</string>
+    <string name="pricetvString">Price</string>
+    <string name="nametvString">Name</string>
+    <string name="enterdetails">Enter The Details</string>
+    <string name="enter_the_details">Enter The Details</string>
+    <string name="name_of_the_product">Name of the product</string>
+    <string name="price_of_the_product">Price of the product</string>
+    <string name="quantity_of_the_product">Quantity</string>
+    <string name="insertSuccesToast">Insert Succesful!</string>
+    <string name="valueincdecstring">Enter the value to add or remove</string>
+    <string name="Valueconst">Value should be greater than zero</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="eightdip">8dp</dimen>
+    <dimen name="sixteendp">16dp</dimen>
+    <dimen name="tendip">10dp</dimen>
+    <dimen name="sixteendip">16dp</dimen>
+</resources>
